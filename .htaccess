@@ -1,0 +1,12 @@
+# Kidsgame Numbers and Letters
+# Redirect non existing URL to index.php 
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /kidsgame-abc-123.ca/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /kidsgame-abc-123.ca/index.php [L]
+</IfModule>
