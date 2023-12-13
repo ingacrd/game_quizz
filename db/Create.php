@@ -67,6 +67,8 @@ class Create extends Database {
         $sql['insertDummyDataScore3'] = "INSERT INTO score(scoreTime, result , livesUsed, registrationOrder)
                 VALUES(now(), 'incomplete', 5, 3);";
 
+        $sql['checkViewExistsQuery'] = "SELECT COUNT(*) FROM information_schema.VIEWS WHERE TABLE_NAME = 'history' AND TABLE_SCHEMA = '" . DBASE . "'";
+
         return $sql;
         
     }
@@ -85,7 +87,18 @@ class Create extends Database {
         $this->executeQuery($sql['createTablePlayer']);
         $this->executeQuery($sql['createTableAuthenticator']);
         $this->executeQuery($sql['createTableScore']);
-        $this->executeQuery($sql['createViewHistory']);
+
+        $viewExistsResult = $this->executeQuery($sql['checkViewExistsQuery']);
+        if ($viewExistsResult !== false && isset($viewExistsResult[0][1])) {
+                // View exists, no need to create it
+                // You can add a log or debug message here if needed
+                echo "the view already exists";
+                } else {
+                // View does not exist, proceed with creation
+                $this->executeQuery($sql['createViewHistory']);
+        }
+
+
         
         //5-EXECUTE THE QUERY TO INSERT DUMMY DATA THE TABLE
 
@@ -103,10 +116,10 @@ class Create extends Database {
                 $this->executeQuery($sql['insertDummyDataAuth2']);
                 $this->executeQuery($sql['insertDummyDataAuth3']);
 
-                // $this->executeQuery($sql['descTableScore']);
-                // $this->executeQuery($sql['insertDummyDataScore1']);
-                // $this->executeQuery($sql['insertDummyDataScore2']);
-                // $this->executeQuery($sql['insertDummyDataScore3']);
+                $this->executeQuery($sql['descTableScore']);
+                $this->executeQuery($sql['insertDummyDataScore1']);
+                $this->executeQuery($sql['insertDummyDataScore2']);
+                $this->executeQuery($sql['insertDummyDataScore3']);
         }
         
 
