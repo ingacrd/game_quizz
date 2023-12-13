@@ -40,7 +40,7 @@ if (isset($_POST['send'])) {
             $_SESSION['err_signin'] = "";
             $_SESSION['registrationOrder'] = $registrationOrder;
             
-            //header('Location: ../../public/form/game-form.php');
+            header('Location: ../../public/form/game-form.php');
             exit();
         } else {
             echo "password not correct";
@@ -48,7 +48,7 @@ if (isset($_POST['send'])) {
             $_SESSION['err_signin'] = "Username or password is incorrect";
             $_SESSION['userName'] = $user;
             $_SESSION['password'] = $password;
-            //header('Location: ../../public/form/signin-form.php');
+            header('Location: ../../public/form/signin-form.php');
         }
     } else {
         echo "user not correct";
@@ -56,7 +56,7 @@ if (isset($_POST['send'])) {
         $_SESSION['err_signin'] = "Username or password is incorrect";
         $_SESSION['userName'] = $user;
         $_SESSION['password'] = $password;
-        //header('Location: ../../public/form/signin-form.php');
+        header('Location: ../../public/form/signin-form.php');
     }
 }
 ?>
