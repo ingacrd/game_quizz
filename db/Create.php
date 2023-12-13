@@ -60,7 +60,7 @@ class Create extends Database {
                 VALUES('" . password_hash('hellocanada', PASSWORD_DEFAULT) . "', 3);";
 
         $sql['descTableScore'] = "DESC score";
-        $sql['insertDummyDataScore1'] = "INSERT INTO (scoreTime, result , livesUsed, registrationOrder)
+        $sql['insertDummyDataScore1'] = "INSERT INTO score(scoreTime, result , livesUsed, registrationOrder)
                 VALUES(now(), 'success', 4, 1);";
         $sql['insertDummyDataScore2'] = "INSERT INTO score(scoreTime, result , livesUsed, registrationOrder)
                 VALUES(now(), 'failure', 6, 2);";
