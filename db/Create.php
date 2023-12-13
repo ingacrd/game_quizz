@@ -98,10 +98,10 @@ class Create extends Database {
                 $this->executeQuery($sql['insertDummyDataAuth2']);
                 $this->executeQuery($sql['insertDummyDataAuth3']);
 
-                $this->executeQuery($sql['descTableScore']);
-                $this->executeQuery($sql['insertDummyDataScore1']);
-                $this->executeQuery($sql['insertDummyDataScore2']);
-                $this->executeQuery($sql['insertDummyDataScore3']);
+                // $this->executeQuery($sql['descTableScore']);
+                // $this->executeQuery($sql['insertDummyDataScore1']);
+                // $this->executeQuery($sql['insertDummyDataScore2']);
+                // $this->executeQuery($sql['insertDummyDataScore3']);
         }
         
 

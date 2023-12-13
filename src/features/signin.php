@@ -5,9 +5,7 @@ require_once "../../public/model/user.php";
 if (isset($_POST['send'])) {
     // Assign data collected from the form signin-form.php
     $user = $_POST['user'];
-    echo $user;
     $password = $_POST['password'];
-    echo $password;
     $userLogged = new User($user);
 
     // DB info
