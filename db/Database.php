@@ -57,6 +57,10 @@ class Database {
                 return $data;
             }
         }
+          // Add error logging
+        error_log("Error executing query [$sqlCode]");
+
+        return false;
     }
 
     protected function closeMySQL(){

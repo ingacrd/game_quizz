@@ -89,7 +89,7 @@ class Create extends Database {
         $this->executeQuery($sql['createTableScore']);
 
         $viewExistsResult = $this->executeQuery($sql['checkViewExistsQuery']);
-        if ($viewExistsResult !== false && isset($viewExistsResult[0][1])) {
+        if ($viewExistsResult !== false && !empty($viewExistsResult)) {
                 // View exists, no need to create it
                 // You can add a log or debug message here if needed
                 echo "the view already exists";
