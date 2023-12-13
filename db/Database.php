@@ -39,7 +39,8 @@ class Database {
         //If execution of the query failed, display an error message
         if ($this->connection->error){
             $errorMessage = mysqli_connect_error();
-            die("Execution of the SQL query [$sqlCode] failed! <br>" . $errorMessage);
+            
+            //die("Execution of the SQL query [$sqlCode] failed! <br>" . $errorMessage);
         }
         //If execution of the query succeed,assign connection to share it
         else{
@@ -59,7 +60,7 @@ class Database {
         }
           // Add error logging
         error_log("Error executing query [$sqlCode]: " . $this->connection->error);
-
+        echo "error doesnt execute query";
         return false;
     }
 
