@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+
 
 require_once "../../public/model/user.php";
 require_once "../../db/Create.php";
@@ -11,14 +14,16 @@ if (isset($_POST['send'])) {
     $user = $_POST['user'];
     $password = $_POST['password'];
     $userLogged = new User($user);
-
+    echo $user;
+    echo $password;
     // Load the content of the user-defined functions used to interact with MySQL
     // Instanciate an object of the Create class used to create the database and table
     // Create the database and tables
     $obj = new Create();
-    echo "database created";
+    var_dump($obj);
     // Instanciate an object of Select Class to look for the user inside the database
     $obj = new Select($user, $password);
+    var_dump($obj);
     echo "database and dummy data created";
     $verifyUserName = $obj->checkUserName();
 
