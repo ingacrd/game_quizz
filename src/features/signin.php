@@ -24,7 +24,7 @@ if (isset($_POST['send'])) {
     // Instanciate an object of Select Class to look for the user inside the database
     $obj = new Select($user, $password);
     var_dump($obj);
-    echo "database and dummy data created";
+    echo "database and dummy data created in signin";
     $verifyUserName = $obj->checkUserName();
 
     if ($verifyUserName === true) {
@@ -40,21 +40,23 @@ if (isset($_POST['send'])) {
             $_SESSION['err_signin'] = "";
             $_SESSION['registrationOrder'] = $registrationOrder;
             
-            header('Location: ../../public/form/game-form.php');
+            //header('Location: ../../public/form/game-form.php');
             exit();
         } else {
+            echo "password not correct";
             session_start();
             $_SESSION['err_signin'] = "Username or password is incorrect";
             $_SESSION['userName'] = $user;
             $_SESSION['password'] = $password;
-            header('Location: ../../public/form/signin-form.php');
+            //header('Location: ../../public/form/signin-form.php');
         }
     } else {
+        echo "user not correct";
         session_start();
         $_SESSION['err_signin'] = "Username or password is incorrect";
         $_SESSION['userName'] = $user;
         $_SESSION['password'] = $password;
-        header('Location: ../../public/form/signin-form.php');
+        //header('Location: ../../public/form/signin-form.php');
     }
 }
 ?>
