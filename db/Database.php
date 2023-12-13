@@ -66,8 +66,11 @@ class Database {
             }
         }
           // Add error logging
+        echo "<br>";
         error_log("Error executing query [$sqlCode]: " . $this->connection->error);
         echo "error doesnt execute query";
+        var_dump($sqlCode);
+        echo "<br>";
         return false;
     }
 
