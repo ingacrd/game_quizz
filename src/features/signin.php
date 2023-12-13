@@ -5,8 +5,9 @@ require_once "../../public/model/user.php";
 if (isset($_POST['send'])) {
     // Assign data collected from the form signin-form.php
     $user = $_POST['user'];
+    echo $user;
     $password = $_POST['password'];
-
+    echo $password;
     $userLogged = new User($user);
 
     // DB info
@@ -20,11 +21,12 @@ if (isset($_POST['send'])) {
     // Instanciate an object of the Create class used to create the database and table
     // Create the database and tables
     $obj = new Create();
-
+    echo "database created";
     // Instanciate an object of Select Class to look for the user inside the database
     $obj = new Select($user, $password);
-
+    echo "database and dummy data created";
     $verifyUserName = $obj->checkUserName();
+
     if ($verifyUserName === true) {
         // Fetch hashed password from the database
         $hashedPasswordFromDB = $obj->getHashedPassword();

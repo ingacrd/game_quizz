@@ -1,7 +1,7 @@
 <?php
 
 require_once "../../public/model/user.php";
-
+include('../../config.php');
 class Select extends Database {
 
     private $user;
