@@ -1,7 +1,9 @@
 <?php
 
-require_once "../../public/model/user.php";
-include('../../config.php');
+
+require_once(__DIR__ . '/../config.php');
+require_once('Database.php');
+
 class Select extends Database {
 
     private $user;

@@ -1,6 +1,10 @@
 <?php
 
 require_once "../../public/model/user.php";
+require_once "../../db/Create.php";
+require_once "../../db/Select.php";
+
+
 
 if (isset($_POST['send'])) {
     // Assign data collected from the form signin-form.php
@@ -8,14 +12,7 @@ if (isset($_POST['send'])) {
     $password = $_POST['password'];
     $userLogged = new User($user);
 
-    // DB info
-    // $tableName = "player";
-
     // Load the content of the user-defined functions used to interact with MySQL
-    include_once "../../db/Database.php";
-    include_once "../../db/Create.php";
-    include_once "../../db/Select.php";
-
     // Instanciate an object of the Create class used to create the database and table
     // Create the database and tables
     $obj = new Create();

@@ -1,6 +1,9 @@
 <?php
 
-include('../../config.php');
+require_once(__DIR__ . '/../config.php');
+require_once('Database.php');
+
+//include('Database.php');
 class Create extends Database {
 
     //Constructor method 
