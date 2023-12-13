@@ -48,11 +48,11 @@ class Create extends Database {
 
         $sql['descTableAuth'] = "DESC authenticator";
         $sql['insertDummyDataAuth1'] = "INSERT INTO authenticator(passCode, registrationOrder)
-                VALUES('123', 1);";
+                VALUES('" . password_hash(hellomontreal) . "', 1);";
         $sql['insertDummyDataAuth2'] = "INSERT INTO authenticator(passCode, registrationOrder)
-                VALUES('123', 2);";
+                VALUES('" . password_hash(helloquebec) . "', 2);";
         $sql['insertDummyDataAuth3'] = "INSERT INTO authenticator(passCode, registrationOrder)
-                VALUES('123', 3);";
+                VALUES('" . password_hash(hellocanada) . "', 3);";
 
         $sql['descTableScore'] = "DESC score";
         $sql['insertDummyDataScore1'] = "INSERT INTO (scoreTime, result , livesUsed, registrationOrder)
@@ -61,10 +61,6 @@ class Create extends Database {
                 VALUES(now(), 'failure', 6, 2);";
         $sql['insertDummyDataScore3'] = "INSERT INTO score(scoreTime, result , livesUsed, registrationOrder)
                 VALUES(now(), 'incomplete', 5, 3);";
-                       
-
-
-  
 
         return $sql;
         
