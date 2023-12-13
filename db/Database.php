@@ -31,69 +31,43 @@ class Database {
             die("Selection of the database". $dbName. "failed! <br>" . $errorMessage);
         }
     }
+
+
     protected function executeQuery($sqlCode){
         $data = array();
-        //Attempt to execute a query
+        //Attempt do execute a query
         $execute = $this->connection->query($sqlCode);
+        //If execution of the query failed, display an error message
 
-        // If execution of the query failed, display an error message
-        if ($execute === false) {
-            $errorMessage = $this->connection->error;
-            // Add error logging
-            error_log("Error executing query [$sqlCode]: " . $errorMessage);
-            echo "Execution of the SQL query [$sqlCode] failed! <br>" . $errorMessage;
+
+        if ($this->connection->error){
+            $errorMessage = mysqli_connect_error();
+            error_log("Error executing query [$sqlCode]: " . $this->connection->error);
+            echo "error executing query: " . $errorMessage;
             return false;
-        } else {
-            if ($execute->num_rows > 0) {
-                // If it's a select query, calculate the number of rows available
+            //die("Execution of the SQL query [$sqlCode] failed! <br>" . $errorMessage);
+        }
+        //If execution of the query succeed,assign connection to share it
+        else{
+            if (isset ($execute->num_rows)){
+                //If it's a selectquery, calculate the number of rows available
                 $numberOfRowsSelected = $execute->num_rows;
-                // Save the rows in an array
+                //Save the rows in an array
                 for ($j = 1; $j <= $numberOfRowsSelected; ++$j) {
-                    // Assign the records of each row to an associative array
+                    //Assign the records of each row to an associative array
                     $each_row = $execute->fetch_array(MYSQLI_ASSOC);
-                    // Assign all the records to an associative 
+                    //Assign all the records to an associative 
                     foreach ($each_row as $section => $item)
                         $data["row$j"]["$section"]=$item; 
                 }
                 return $data;
             }
         }
-        return true; // Return true for successful execution of non-select queries
+          // Add error logging
+        error_log("Error executing query [$sqlCode]: " . $this->connection->error);
+        echo "error doesnt execute query";
+        return false;
     }
-
-    // protected function executeQuery($sqlCode){
-    //     $data = array();
-    //     //Attempt do execute a query
-    //     $execute = $this->connection->query($sqlCode);
-    //     //If execution of the query failed, display an error message
-
-
-    //     if ($this->connection->error){
-    //         $errorMessage = mysqli_connect_error();
-            
-    //         //die("Execution of the SQL query [$sqlCode] failed! <br>" . $errorMessage);
-    //     }
-    //     //If execution of the query succeed,assign connection to share it
-    //     else{
-    //         if (isset ($execute->num_rows)){
-    //             //If it's a selectquery, calculate the number of rows available
-    //             $numberOfRowsSelected = $execute->num_rows;
-    //             //Save the rows in an array
-    //             for ($j = 1; $j <= $numberOfRowsSelected; ++$j) {
-    //                 //Assign the records of each row to an associative array
-    //                 $each_row = $execute->fetch_array(MYSQLI_ASSOC);
-    //                 //Assign all the records to an associative 
-    //                 foreach ($each_row as $section => $item)
-    //                     $data["row$j"]["$section"]=$item; 
-    //             }
-    //             return $data;
-    //         }
-    //     }
-    //       // Add error logging
-    //     error_log("Error executing query [$sqlCode]: " . $this->connection->error);
-    //     echo "error doesnt execute query";
-    //     return false;
-    // }
 
     protected function closeMySQL(){
         if (isset($this->connection))
