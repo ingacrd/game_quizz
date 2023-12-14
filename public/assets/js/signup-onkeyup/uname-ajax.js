@@ -1,5 +1,5 @@
 const URL = window.location.origin;
-const AJAX_URL = URL + "/DW3/numbers_game_project/src/signup-onkeyup/";
+const AJAX_URL = URL + "../../../src/signup-onkeyup/";
 
 function validate_userName() {
     let userName = document.getElementById('userName').value;
