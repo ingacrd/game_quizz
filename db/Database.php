@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
 
 require_once(__DIR__ . '/../config.php');
 
@@ -34,6 +34,7 @@ class Database {
 
 
     protected function executeQuery($sqlCode){
+        //echo "<br> Executing SQL query: $sqlCode<br>";
         $data = array();
         //Attempt do execute a query
         $execute = $this->connection->query($sqlCode);

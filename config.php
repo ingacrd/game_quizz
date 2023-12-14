@@ -9,7 +9,6 @@ define('DBASE', 'o6e55f3yywsdx95s');
 // define('HOST','localhost');
 // define('USER','root');
 // define('PASS','');
-
 // //DB info 
 // define('DBASE', 'kidsGames')
 

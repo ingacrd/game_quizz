@@ -43,7 +43,7 @@
 
                     <div class="button-container">
                         <input class = "btn btn-primary gamebtn" type="submit" name="send" value="Login" />
-                        <a class = "btn btn-primary gamebtn" href="pw-update-form.php">Forgot your Password?</a>
+                        <a class = "fs-6 btn btn-primary gamebtn" href="pw-update-form.php">Forgot your Password?</a>
                     </div>
                     
                     <p class = "fs-6 text-center">Don't have an account? <a href="signup-form.php">Create One!</a></p>

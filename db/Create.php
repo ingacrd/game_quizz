@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
 
 require_once(__DIR__ . '/../config.php');
 require_once('Database.php');
@@ -90,10 +90,10 @@ class Create extends Database {
         //$this->executeQuery($sql['createViewHistory']);
 
         $viewExistsResult = $this->executeQuery($sql['checkViewExistsQuery']);
-        echo "<br> TRY TO CREATE THE VIEW: ";
+        // echo "<br> TRY TO CREATE THE VIEW: ";
 
-        var_dump($viewExistsResult);
-        echo "<br>";
+        // var_dump($viewExistsResult);
+        // echo "<br>";
         if ($viewExistsResult !== false) {
                 $viewCount = $viewExistsResult['row1']['COUNT(*)'];
                 
