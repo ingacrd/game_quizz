@@ -44,9 +44,9 @@ class Database {
         if ($this->connection->error){
             $errorMessage = mysqli_connect_error();
             error_log("Error executing query [$sqlCode]: " . $this->connection->error);
-            echo "<br>error executing query: " . $errorMessage;
-            var_dump($sqlCode);
-            echo "<br>";
+            // echo "<br>error executing query: " . $errorMessage;
+            // var_dump($sqlCode);
+            // echo "<br>";
             return false;
             //die("Execution of the SQL query [$sqlCode] failed! <br>" . $errorMessage);
         }

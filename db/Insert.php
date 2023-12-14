@@ -11,7 +11,7 @@ class Insert extends Database {
     private $tableName = "score";
     private $registrationOrder;
     private $livesUsed;
-    private $dateTime;
+//    private $dateTime;
     private $status;
 
     private $fName; 
@@ -25,6 +25,44 @@ class Insert extends Database {
 
     }
 
+    //SQL query method
+    //private function sql($livesUsed, $dateTime, $status){
+    private function sql(){
+        $sql['descTableScore'] = "DESC score";
+        $sql['descTablePlayer'] = "DESC player";
+        $sql['descTableAuthenticator'] = "DESC authenticator";     
+        $sql['selectUser'] = "SELECT * FROM player WHERE userName = '" . $this->userName . "'";
+
+        $sql['insertAllColumnsScore'] = "INSERT INTO score (scoreTime, result, livesUsed,registrationOrder)
+            VALUES ('".$this->currentDateTime."', '".$this->status."', '".$this->livesUsed."', '".$this->registrationOrder."')";
+        $sql['insertPlayer'] = "INSERT INTO player (fName, lName, userName, registrationTime) VALUES
+        ('". $this->fName."', '".$this->lName."', '".$this->userName."', '".$this->currentDateTime."')";
+        $sql['selectAuth'] = "SELECT * FROM authenticator WHERE registrationOrder = '". $this->registrationOrder."'";
+        $sql['insertAuthenticator']= "INSERT INTO authenticator (passCode, registrationOrder) VALUES 
+        ('". $this->passcode ."', '".$this->registrationOrder ."')";
+        return $sql;
+    }
+
+    function add_result($status, $livesUsed, $registrationOrder) {
+        $this->status = $status;
+        $this->livesUsed = $livesUsed;
+        $this->registrationOrder = $registrationOrder;
+        $this->currentDateTime = date("Y-m-d H:i:s");
+
+        $sql = $this->sql();
+        //1-CONNECT TO MYSQL
+        $this->connectToMySQL(HOST, USER, PASS);
+        //2-SELECT THE DATABASE
+        $this->selectDatabase(DBASE);
+        
+        //3-EXECUTE THE QUERY TO DESCRIBE THE TABLE
+        $this->executeQuery($sql['descTableScore']);
+        //4-EXECUTE THE QUERY TO INSERT INTO THE TABLE
+        $this->executeQuery($sql['insertAllColumnsScore']);
+
+    }
+
+    
     function insertHistory($registrationOrder, $livesUsed, $dateTime, $status){
         $this->registrationOrder = $registrationOrder;
         $this->livesUsed = $livesUsed;
@@ -33,23 +71,18 @@ class Insert extends Database {
         
         $this->insertToTableScore($livesUsed, $dateTime, $status);
     }
-
-
-    //SQL query method
-    //private function sql($livesUsed, $dateTime, $status){
-    private function sql(){
-        $sql['descTableScore'] = "DESC score";
-        $sql['descTablePlayer'] = "DESC player";
-        $sql['descTableAuthenticator'] = "DESC authenticator";     
-        $sql['selectUser'] = "SELECT * FROM player WHERE userName = '" . $this->userName . "'";
-        $sql['insertAllColumnsScore'] = "INSERT INTO " . $this->tableName . " (scoreTime, result, livesUsed)
-            VALUES ('".$this->dateTime."', '".$this->status."', '".$this->livesUsed."') WHERE registrationOrder = '" . $this->registrationOrder . "';";
-        $sql['insertPlayer'] = "INSERT INTO player (fName, lName, userName, registrationTime) VALUES
-        ('". $this->fName."', '".$this->lName."', '".$this->userName."', '".$this->currentDateTime."')";
-        $sql['selectAuth'] = "SELECT * FROM authenticator WHERE registrationOrder = '". $this->registrationOrder."'";
-        $sql['insertAuthenticator']= "INSERT INTO authenticator (passCode, registrationOrder) VALUES 
-        ('". $this->passcode ."', '".$this->registrationOrder ."')";
-        return $sql;
+        //main method
+    private function insertToTableScore($livesUsed, $dateTime, $status){
+        //Assign sql query
+        $sql = $this->sql($livesUsed, $dateTime, $status);
+        //1-CONNECT TO MYSQL
+        $this->connectToMySQL(HOST, USER, PASS);
+        //2-SELECT THE DATABASE
+        $this->selectDatabase($this->dbName);
+        //3-EXECUTE THE QUERY TO DESCRIBE THE TABLE
+        $this->executeQuery($sql['descTableScore']);
+        //4-EXECUTE THE QUERY TO INSERT INTO THE TABLE
+        $this->executeQuery($sql['insertAllColumnsScore']);
     }
 
 
@@ -94,19 +127,7 @@ class Insert extends Database {
 
     }
 
-    //main method
-    private function insertToTableScore($livesUsed, $dateTime, $status){
-        //Assign sql query
-        $sql = $this->sql($livesUsed, $dateTime, $status);
-        //1-CONNECT TO MYSQL
-        $this->connectToMySQL(HOST, USER, PASS);
-        //2-SELECT THE DATABASE
-        $this->selectDatabase($this->dbName);
-        //3-EXECUTE THE QUERY TO DESCRIBE THE TABLE
-        $this->executeQuery($sql['descTableScore']);
-        //4-EXECUTE THE QUERY TO INSERT INTO THE TABLE
-        $this->executeQuery($sql['insertAllColumnsScore']);
-    }
+
 
 
     public function __destruct(){

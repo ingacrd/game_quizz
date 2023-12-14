@@ -2,25 +2,12 @@
 session_start();
 
 require '../../src/features/game.php';
-include_once "../../db/Database.php";
-include_once "../../db/Create.php";
-include_once "../../db/Select.php";
-include_once "../../db/Insert.php";
+// include_once "../../db/Database.php";
+// include_once "../../db/Create.php";
+// include_once "../../db/Select.php";
+require_once "../../db/Insert.php";
 
-function add_result($status, $livesUsed, $registrationOrder) {
-    $mysqli = new mysqli('localhost', 'root', '', 'kidsGames');
-    $currentDateTime = date("Y-m-d H:i:s");
 
-    if($mysqli -> connect_errno) {
-        echo "Failed to connect to MYSQL: " . $mysqli->connecto_error;
-        exit();
-    }
-
-    $sqlInsertResult = "INSERT INTO score (scoreTime, result, livesUsed, registrationOrder) VALUES
-    ('$currentDateTime', '$status', '$livesUsed', '$registrationOrder')";
-    $mysqli->query($sqlInsertResult);
-    $mysqli->close();
-}
 
 if (!isset($_SESSION["random_strings_generated"])) {
 
@@ -56,12 +43,12 @@ $questions = array(
     "Identify the smallest and the largest number in a set of 6 numbers: {$_SESSION['random_numbers_q6']}",
 );
 
-// echo createAnswerAscending($_SESSION["random_letters_q1"]). "\t";
-// echo createAnswerDescending($_SESSION["random_letters_q2"]). "\t";
-// echo createAnswerAscendingNumbers($_SESSION["random_numbers_q3"]);
-// echo createAnswerDescending($_SESSION["random_numbers_q4"]). "\t";
-// echo createAnswerAscendingTwoInput($_SESSION["random_letters_q5"]). "\t";
-// echo createAnswerAscendingTwoNumber($_SESSION["random_numbers_q6"]);
+echo createAnswerAscending($_SESSION["random_letters_q1"]). "\t";
+echo createAnswerDescending($_SESSION["random_letters_q2"]). "\t";
+echo createAnswerAscendingNumbers($_SESSION["random_numbers_q3"]);
+echo createAnswerDescending($_SESSION["random_numbers_q4"]). "\t";
+echo createAnswerAscendingTwoInput($_SESSION["random_letters_q5"]). "\t";
+echo createAnswerAscendingTwoNumber($_SESSION["random_numbers_q6"]);
 
 // Check if the user submitted a response
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -142,7 +129,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // in this if statement, you will have add the logic that will be responsible for storing the result in the DB
     if (isset($_SESSION["mistake_count"]) && $_SESSION["mistake_count"] == 6) {
 
-        add_result("failure", $_SESSION["mistake_count"], $_SESSION['registrationOrder']);
+        $obj = new Insert();
+        $obj->add_result("failure", $_SESSION["mistake_count"], $_SESSION['registrationOrder']);
 
         session_unset();
         session_destroy();
@@ -224,7 +212,8 @@ if ($level <= count($questions)) {
 } else {
     // If a user is able to successfully complete the game in under 6 attempts, 
     // the session will be terminated and they will be re-directed to a game-won screen
-    add_result("success", $_SESSION["mistake_count"], $_SESSION['registrationOrder']);
+    $obj = new Insert();
+    $obj->add_result("success", $_SESSION["mistake_count"], $_SESSION['registrationOrder']);
     session_unset();
     session_destroy();
     header("Location: ../message/game-won.php");
