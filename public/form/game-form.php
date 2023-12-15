@@ -2,7 +2,7 @@
 session_start();
 
 require '../../src/features/game.php';
-require '../../src/features/cancel.php';
+
 
 // include_once "../../db/Database.php";
 // include_once "../../db/Create.php";
@@ -45,12 +45,12 @@ $questions = array(
     "Identify the smallest and the largest number in a set of 6 numbers: {$_SESSION['random_numbers_q6']}",
 );
 
-echo createAnswerAscending($_SESSION["random_letters_q1"]). "\t";
-echo createAnswerDescending($_SESSION["random_letters_q2"]). "\t";
-echo createAnswerAscendingNumbers($_SESSION["random_numbers_q3"]);
-echo createAnswerDescending($_SESSION["random_numbers_q4"]). "\t";
-echo createAnswerAscendingTwoInput($_SESSION["random_letters_q5"]). "\t";
-echo createAnswerAscendingTwoNumber($_SESSION["random_numbers_q6"]);
+// echo createAnswerAscending($_SESSION["random_letters_q1"]). "\t";
+// echo createAnswerDescending($_SESSION["random_letters_q2"]). "\t";
+// echo createAnswerAscendingNumbers($_SESSION["random_numbers_q3"]);
+// echo createAnswerDescending($_SESSION["random_numbers_q4"]). "\t";
+// echo createAnswerAscendingTwoInput($_SESSION["random_letters_q5"]). "\t";
+// echo createAnswerAscendingTwoNumber($_SESSION["random_numbers_q6"]);
 
 // Check if the user submitted a response
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -180,7 +180,7 @@ if ($level <= count($questions)) {
 
                         <div class="button-container">
                             <button class = "btn btn-primary gamebtn" type="submit">Submit</button>
-                            <a class = "btn btn-primary gamebtn" href="<?php cancel_game(); ?>">Cancel</a>
+                            <a class = "btn btn-primary gamebtn" href="../../src/features/cancel.php">Cancel</a>
                         </div>
                     </div>
                     </form>
