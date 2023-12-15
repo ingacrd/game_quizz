@@ -36,7 +36,7 @@
 
                 <div class="button-container">
                     <button class= "btn btn-primary gamebtn" type="submit">Update</button>
-                    <a class= "btn btn-primary gamebtn" href="signin-form.php" class="back-button">Return to Login</a>
+                    <a class= "btn btn-primary gamebtn" href="signin-form.php" class="back-button">Log in</a>
                     
                 </div>                  
             </form>

@@ -165,7 +165,7 @@ if ($level <= count($questions)) {
 
                 <div class="container_2">
                     <div class="promo-container">
-                        <h2 class = "display-6 text-center fw-bold">Number of Mistakes: <?php echo isset($_SESSION["mistake_count"]) ? $_SESSION["mistake_count"] : 0;  ?></h2>
+                        <h2 class = "display-6 text-center fw-bold p-2">Number of Mistakes: <?php echo isset($_SESSION["mistake_count"]) ? $_SESSION["mistake_count"] : 0;  ?></h2>
                     </div>
                     <div class="promo-container">
                         <h2 class = "display-6 text-center fw-bold">Level <?php echo $level; ?></h2>
@@ -177,7 +177,7 @@ if ($level <= count($questions)) {
                         <input class = "mb-3" type="hidden" name="level" value="<?php echo $level; ?>">
 
                         <div class="button-container">
-                            <button class = "btn btn-primary gamebtn" type="submit">Submit Answer</button>
+                            <button class = "btn btn-primary gamebtn" type="submit">Submit</button>
                             <a class = "btn btn-primary gamebtn" href="../../src/features/cancel.php">Cancel</a>
                         </div>
                     </div>

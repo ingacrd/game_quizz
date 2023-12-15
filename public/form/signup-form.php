@@ -48,7 +48,7 @@ unset($_SESSION['error_message']);
                 <p class = "fs-6" id="pcode2-feedback"></p>
 
                 <div class="button-container">
-                    <input class = "btn btn-primary gamebtn" type="submit" name="send" value="Create Account" />
+                    <input class = "btn btn-primary gamebtn" type="submit" name="send" value="Sign up" />
                 </div>
 
                 <p class = "fs-6 text-center">Already have an account? <a href="signin-form.php">Login</a></p>
