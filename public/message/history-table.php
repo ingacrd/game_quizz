@@ -28,8 +28,8 @@
                 <h2 class = "display-5 text-center fw-bold">Game History</h2>
             </div>
             <!--------- This is where the table will go to show the game history data that will be retreived from the DB --------->
-            <div class="main-container px-4 table-responsive">
-                <table class = "table table-striped">
+            <div class="main-container p-2">
+                <table class = "table table-striped table-responsive">
                     <thead>
                         <tr>
  

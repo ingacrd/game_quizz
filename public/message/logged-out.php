@@ -24,7 +24,7 @@
                     <p>Thanks for playing! Hope to see you again soon!</p>
                 </div>
                 <div class="button-container">
-                    <a class = "btn btn-primary gamebtn" href="../form/signin-form.php">Return to Login</a>
+                    <a class = "btn btn-primary gamebtn" href="../form/signin-form.php">Log in</a>
                 </div>
             </div>
         </div>
