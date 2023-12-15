@@ -2,6 +2,8 @@
 session_start();
 
 require '../../src/features/game.php';
+require '../../src/features/cancel.php';
+
 // include_once "../../db/Database.php";
 // include_once "../../db/Create.php";
 // include_once "../../db/Select.php";
@@ -178,7 +180,7 @@ if ($level <= count($questions)) {
 
                         <div class="button-container">
                             <button class = "btn btn-primary gamebtn" type="submit">Submit</button>
-                            <a class = "btn btn-primary gamebtn" href="../../src/features/cancel.php">Cancel</a>
+                            <a class = "btn btn-primary gamebtn" href="<?php cancel_game(); ?>">Cancel</a>
                         </div>
                     </div>
                     </form>
