@@ -32,7 +32,7 @@
                 </div>
                 <form class = "main-container" method="post" action="../../src/features/signin.php">
                     <?php if (!empty($account_success)): ?>
-                    <p class="error-message"><?php echo $account_success; ?></p>
+                    <p class="error-message fs-6 text-center"><?php echo $account_success; ?></p>
                     <?php endif; ?>
                     <input class = "mb-3" type="text" placeholder="Username" name = "user"
                         value="<?php echo isset($_SESSION['userName']) ? $_SESSION['userName'] : ''; ?>"/>
