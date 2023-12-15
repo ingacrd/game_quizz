@@ -131,11 +131,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $obj = new Insert();
         $obj->add_result("failure", $_SESSION["mistake_count"], $_SESSION['registrationOrder']);
-
-        session_unset();
-        session_destroy();
+        $_SESSION["mistake_count"]=0;
+        //session_unset();
+        // session_destroy();
         header("Location: ../message/game-over.php");
-        exit();
+        //exit();
     }
 }
 
@@ -214,9 +214,12 @@ if ($level <= count($questions)) {
     // the session will be terminated and they will be re-directed to a game-won screen
     $obj = new Insert();
     $obj->add_result("success", $_SESSION["mistake_count"], $_SESSION['registrationOrder']);
-    session_unset();
-    session_destroy();
+    //session_unset();
+    //session_destroy();
+    $_SESSION["level"] =1;
+    //$level = 0;
+    $_SESSION["mistake_count"] = 0;
     header("Location: ../message/game-won.php");
-    exit();
+    //exit();
 }
 ?>
