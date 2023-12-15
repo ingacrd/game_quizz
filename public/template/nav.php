@@ -1,4 +1,4 @@
-<nav class ="navbar navbar-expand gamenavbar" >
+<nav class ="navbar navbar-expand gamenavbar" data-bs-theme="dark" >
     <div class="container-fluid">
             <div class="navbar-nav">
                 <a class="nav-link active" href="../../public/form/game-form.php">Game</a>

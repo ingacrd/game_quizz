@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         WHERE p.userName='$userName'";
     
         if ($conn->query($sql) === TRUE) {
-            $account_success = "Password has been updated successfully! You may now login";
+            $account_success = "Password updated";
             $_SESSION['account_success'] = $account_success;
             // Redirect user
             header("Location: ../../public/form/signin-form.php");

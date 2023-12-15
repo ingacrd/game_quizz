@@ -2,6 +2,7 @@
 
 /* color palet:
  #acc7ce #ebd2cb #ce58bb #b9a47a #9fac9d #1aa4d3 #bdf3f3 #6aadaf
+ #b7a0c9 #3063bd #10112c #4babea #1f3586 #11205e #5d2d45 #9b3852
 */
 * {
     margin: 0;
@@ -51,8 +52,9 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    background-color: #ce58bb;
-    color: white;
+    background-color: #11205e;
+    /* background-color: #ce58bb; */
+    color: #4babea;
     font-size: 9rem;
 }
 
@@ -65,7 +67,9 @@ body {
 }
 
 .main-container {
-    background-color: white;
+
+    /* background-color: white; */
+    background-color: #b7a0c9;
     border: none;
     border-radius: 15px;
     width: 90%;
@@ -106,16 +110,17 @@ input.gamebtn, a.gamebtn, button.gamebtn {
     height: 3em;
     border: none;
     border-radius: 5px;
-    background-color: #bdf3f3;
+    background-color: #3063bd;
+    /* background-color: #bdf3f3; */
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 input.gamebtn:hover,
 a.gamebtn:hover,
 button.gamebtn:hover {
     cursor: pointer;
-    background-color: #1aa4d3;
+    background-color: #4babea;
 }
 
 a:visited {

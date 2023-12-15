@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $obj->create_player($fName, $lName, $userName, $password);
         $obj->createAuthenticator();
 
-        $account_success = "Account has been created successfully! You may now login";
+        $account_success = "Account has been created";
         //echo "br".$account_success;
         $_SESSION['account_success'] = $account_success;
         //echo $account_success;
