@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['account_success'] = $account_success;
         //echo $account_success;
         header("Location: ../../public/form/signin-form.php");
+     
         exit();
     } else {
         // Validation failed

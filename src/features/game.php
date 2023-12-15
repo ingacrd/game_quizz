@@ -1,5 +1,27 @@
 <?php
 
+function initGame(){
+    
+    $_SESSION["level"] =1;
+    $_SESSION["mistake_count"] = 0;
+    $random_letters_q1 = generateRandomLetters();
+    $random_letters_q2 = generateRandomLetters();
+    $random_numbers_q3 = generateRandomNumbers();
+    $random_numbers_q4 = generateRandomNumbers();
+    $random_letters_q5 = generateRandomLetters();
+    $random_numbers_q6 = generateRandomNumbers();
+
+    // Set the random strings in the session    
+    $_SESSION["random_strings_generated"] = true;
+    $_SESSION["random_letters_q1"] = $random_letters_q1;
+    $_SESSION["random_letters_q2"] = $random_letters_q2;
+    $_SESSION["random_numbers_q3"] = $random_numbers_q3;
+    $_SESSION["random_numbers_q4"] = $random_numbers_q4;
+    $_SESSION["random_letters_q5"] = $random_letters_q5;
+    $_SESSION["random_numbers_q6"] = $random_numbers_q6;
+
+}
+
 // Function that will generate a string of 6 random numbers
 function generateRandomNumbers() {
     $numbers = [];

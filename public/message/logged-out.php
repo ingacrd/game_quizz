@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include '../template/nav.php'; ?>
+
     <div class = "container-fluid background ">
         <div class="main">
         <div class="container_2">

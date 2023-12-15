@@ -101,19 +101,21 @@ class Create extends Database {
                         // View does not exist, proceed with creation
                         $createViewResult = $this->executeQuery($sql['createViewHistory']);
                         
-                        if ($createViewResult !== false) {
-                        echo "the view has been created";
-                        } else {
-                        echo "error creating the view";
-                        }
-                } else {
-                        // View already exists
-                        echo "the view already exists";
-                }
-        } else {
-                // Handle the case where the query to check view existence fails
-                echo "error checking view existence";
+                        // if ($createViewResult !== false) {
+                        // //echo "the view has been created";
+                        // } else {
+                        // //echo "error creating the view";
+                        // }
+                } 
+                // else {
+                //         // View already exists
+                //         //echo "the view already exists";
+                // }
         }
+        //  else {
+        //         // Handle the case where the query to check view existence fails
+        //        //echo "error checking view existence";
+        // }
 
 
         
