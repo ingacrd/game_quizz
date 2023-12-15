@@ -28,8 +28,9 @@
                 <h2 class = "display-5 text-center fw-bold">Game History</h2>
             </div>
             <!--------- This is where the table will go to show the game history data that will be retreived from the DB --------->
-            <div class="main-container p-2">
-                <table class = "table table-striped table-responsive">
+            <div class="main-container p-2 ">
+                <div class="table-responsive">
+                    <table class = "table table-striped ">
                     <thead>
                         <tr>
  
@@ -52,6 +53,9 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                </div>
+
+
             </div>
             
         </div>
